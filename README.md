@@ -1,4 +1,4 @@
-# generator-twebapp [![Build Status](https://travis-ci.org/tadashi1105/generator-twebapp.svg)](https://travis-ci.org/tadashi1105/generator-twebapp)
+# generator-twebapp [![Build Status](https://travis-ci.org/tadashi1105/generator-twebapp.svg?branch=master)](https://travis-ci.org/tadashi1105/generator-twebapp)
 > [Yeoman](http://yeoman.io) generator
 
 

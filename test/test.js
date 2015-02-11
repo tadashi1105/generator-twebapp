@@ -6,10 +6,10 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('wptheme:app', function () {
+describe('twebapp:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
-      .inDir(path.join(os.tmpdir(), './temp-test'))
+      .inDir(path.join(__dirname, '.tmp'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
         someOption: true
@@ -19,10 +19,16 @@ describe('wptheme:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'bower.json',
-      'package.json',
       '.editorconfig',
-      '.jshintrc'
+      '.gitattributes',
+      '.gitignore',
+      '.jshintrc',
+      'Gruntfile.js',
+      'app/favicon.ico',
+      'app/index.html',
+      'app/robots.txt',
+      'bower.json',
+      'package.json'
     ]);
   });
 });

@@ -1,0 +1,7 @@
+node_modules
+dist
+.tmp<% if (includeSass) { %>
+.sass-cache<% } %>
+bower_components
+.idea
+.DS_Store

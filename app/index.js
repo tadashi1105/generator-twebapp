@@ -104,6 +104,8 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     gruntfile: function () {
       this.template('Gruntfile.js');
+      this.template('initConfig.js');
+      this.directory('grunt');
     },
 
     packageJSON: function () {
@@ -191,6 +193,10 @@ module.exports = yeoman.generators.Base.extend({
       });
     },
 
+    templates: function () {
+      this.directory('templates');
+    },
+
     app: function () {
       this.directory('app');
       this.mkdir('app/scripts');
@@ -204,7 +210,7 @@ module.exports = yeoman.generators.Base.extend({
       } else {
         this.copy('main.js', 'app/scripts/main.js');
       }
-    },
+    }
   },
 
   install: function () {

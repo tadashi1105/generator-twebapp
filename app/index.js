@@ -152,49 +152,50 @@ module.exports = yeoman.generators.Base.extend({
       this.template(css, 'app/styles/' + css);
     },
 
-    writeIndex: function () {
-      this.indexFile = this.engine(
-        this.readFileAsString(join(this.sourceRoot(), 'index.html')),
-        this
-      );
+    //writeIndex: function () {
+    //  this.indexFile = this.engine(
+    //    this.readFileAsString(join(this.sourceRoot(), 'index.ejs')),
+    //    this
+    //  );
 
-      // wire Bootstrap plugins
-      if (this.includeBootstrap) {
-        var bs = 'bower_components/';
+    //  // wire Bootstrap plugins
+    //  if (this.includeBootstrap) {
+    //    var bs = 'bower_components/';
 
-        if (this.includeSass) {
-          bs += 'bootstrap-sass-offical/assets/javascripts/bootstrap/';
-        } else {
-          bs += 'bootstrap/js/';
-        }
+    //    if (this.includeSass) {
+    //      bs += 'bootstrap-sass-offical/assets/javascripts/bootstrap/';
+    //    } else {
+    //      bs += 'bootstrap/js/';
+    //    }
 
-        this.indexFile = this.appendScripts(this.indexFile, 'scripts/plugins.js', [
-          bs + 'affix.js',
-          bs + 'alert.js',
-          bs + 'dropdown.js',
-          bs + 'tooltip.js',
-          bs + 'modal.js',
-          bs + 'transition.js',
-          bs + 'button.js',
-          bs + 'popover.js',
-          bs + 'carousel.js',
-          bs + 'scrollspy.js',
-          bs + 'collapse.js',
-          bs + 'tab.js'
-        ]);
-      }
+    //    this.indexFile = this.appendScripts(this.indexFile, 'scripts/plugins.js', [
+    //      bs + 'affix.js',
+    //      bs + 'alert.js',
+    //      bs + 'dropdown.js',
+    //      bs + 'tooltip.js',
+    //      bs + 'modal.js',
+    //      bs + 'transition.js',
+    //      bs + 'button.js',
+    //      bs + 'popover.js',
+    //      bs + 'carousel.js',
+    //      bs + 'scrollspy.js',
+    //      bs + 'collapse.js',
+    //      bs + 'tab.js'
+    //    ]);
+    //  }
 
-      this.indexFile = this.appendFiles({
-        html: this.indexFile,
-        fileType: 'js',
-        optimizedPath: 'scripts/main.js',
-        sourceFileList: ['scripts/main.js'],
-        searchPath: ['app', '.tmp']
-      });
-    },
+    //  this.indexFile = this.appendFiles({
+    //    html: this.indexFile,
+    //    fileType: 'js',
+    //    optimizedPath: 'scripts/main.js',
+    //    sourceFileList: ['scripts/main.js'],
+    //    searchPath: ['app', '.tmp']
+    //  });
+    //},
 
     templates: function () {
       this.directory('templates');
+      this.directory('ejs', 'app/ejs');
     },
 
     app: function () {
@@ -203,7 +204,8 @@ module.exports = yeoman.generators.Base.extend({
       this.mkdir('app/styles');
       this.mkdir('app/images');
       this.mkdir('app/sprites');
-      this.write('app/index.html', this.indexFile);
+      this.copy('index.ejs', 'app/index.ejs');
+      //this.write('app/index.ejs', this.indexFile);
 
       if (this.coffee) {
         this.copy('main.coffee', 'app/scripts/main.coffee');

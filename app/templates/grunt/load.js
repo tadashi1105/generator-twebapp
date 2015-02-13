@@ -3,7 +3,7 @@
 var fs = require('fs'),
     path = require('path');
 
-module.exports = function(grunt) {
+module.exports = function() {
 
   // Load local grunt tasks automatically
   var files = fs.readdirSync(__dirname),
@@ -13,8 +13,10 @@ module.exports = function(grunt) {
     var stats = fs.statSync(path.join(__dirname,file));
     if (stats.isFile()) {
       var name = path.basename(file,'.js');
-      if (name === 'init') return;
-      result[name] = require(__dirname + '/'+name);
+      if (name === 'init') {
+        return;
+      }
+      result.name = require(__dirname + '/'+name);
     }
   });
   return result;

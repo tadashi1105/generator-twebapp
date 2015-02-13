@@ -396,6 +396,10 @@ module.exports = {
       cwd: '<%%= config.app %>/styles',
       dest: '.tmp/styles/',
       src: '{,*/}*.css'
+    },
+    styleguide: {
+      src: '<%%= config.dist %>/styles/*.main.css',
+      dest: '<%%= config.dist %>/styles/style.css'
     }
   },<% if (includeModernizr) { %>
 
@@ -473,5 +477,18 @@ module.exports = {
       expand: true,
       ext: '.html'
     }
+  },
+
+  frontNote: {
+    options: {
+      out: '<%%= config.dist %>/styleguide',
+      template: 'templates/styleguide/index.html',
+      overview: 'templates/styleguide/styleguide.md',
+      includePath: 'templates/styleguide/assets/**/*',
+      css: '../styles/style.css'
+    },
+    dist: [
+      '<%%= config.app %>/styles/{,*/}*.scss'
+    ]
   }
 };

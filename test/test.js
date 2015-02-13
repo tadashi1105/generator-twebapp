@@ -108,7 +108,7 @@ describe('Webapp generator', function () {
 
         assert.fileContent([
           ['initConfig.js', /modernizr/],
-          ['app/index.ejs', /modernizr/],
+          ['app/ejs/_head.ejs', /modernizr/],
           ['bower.json', /modernizr/],
           ['package.json', /modernizr/],
         ]);
@@ -123,7 +123,7 @@ describe('Webapp generator', function () {
 
         assert.fileContent([
           ['initConfig.js', /bootstrap/],
-          ['app/index.ejs', /bootstrap/],
+          ['app/foot.ejs', /bootstrap/],
           ['bower.json', /bootstrap/]
         ]);
 

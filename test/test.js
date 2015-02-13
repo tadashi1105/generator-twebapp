@@ -67,7 +67,7 @@ describe('Webapp generator', function () {
           ['bower.json', /modernizr/],
           ['package.json', /modernizr/],
           ['initConfig.js', /bootstrap/],
-          ['app/ejs/_head.ejs', /bootstrap/],
+          ['app/ejs/_foot.ejs', /bootstrap/],
           ['bower.json', /bootstrap/],
           ['initConfig.js', /sass/],
           ['app/index.ejs', /Sass/],

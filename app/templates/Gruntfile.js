@@ -81,7 +81,9 @@ module.exports = function (grunt) {
     'replace:path',
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'frontNote',
+    'copy:styleguide'
   ]);
 
   grunt.registerTask('default', [

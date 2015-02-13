@@ -63,11 +63,11 @@ describe('Webapp generator', function () {
         assert.noFileContent([
           ['initConfig.js', /coffee/],
           ['initConfig.js', /modernizr/],
-          ['app/index.ejs', /modernizr/],
+          ['app/ejs/_head.ejs', /modernizr/],
           ['bower.json', /modernizr/],
           ['package.json', /modernizr/],
           ['initConfig.js', /bootstrap/],
-          ['app/index.ejs', /bootstrap/],
+          ['app/ejs/_head.ejs', /bootstrap/],
           ['bower.json', /bootstrap/],
           ['initConfig.js', /sass/],
           ['app/index.ejs', /Sass/],

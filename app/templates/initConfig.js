@@ -1,14 +1,16 @@
 'use strict';
 
+// Project settings
+var config = {
+  app: 'app',
+  dist: 'dist'
+};
+
 // Define the configuration for all the tasks
 module.exports = {
 
-  // Project settings
   // Configurable paths
-  config: {
-    app: 'app',
-    dist: 'dist'
-  },
+  config: config,
 
   // Watches files for changes and runs tasks based on the changed files
   watch: {
@@ -36,7 +38,7 @@ module.exports = {
       tasks: ['test:watch']
     },<% } %>
     gruntfile: {
-      files: ['Gruntfile.js']
+      files: ['Gruntfile.js', 'initConfig.js', 'grunt/{,*/}*.js']
     },<% if (includeSass) { %>
     sass: {
       files: ['<%%= config.app %>/styles/{,*/}*.{scss,sass}'],
@@ -45,6 +47,10 @@ module.exports = {
     styles: {
       files: ['<%%= config.app %>/styles/{,*/}*.css'],
       tasks: ['newer:copy:styles', 'autoprefixer']
+    },
+    ejsbuild: {
+      files: ['<%%= config.app %>/{,*/}*.ejs'],
+      tasks: ['ejs']
     },
     livereload: {
       options: {
@@ -124,6 +130,8 @@ module.exports = {
     },
     all: [
       'Gruntfile.js',
+      'initConfig.js',
+      'grunt/{,*/}*js',
       '<%%= config.app %>/scripts/{,*/}*.js',
       '!<%%= config.app %>/scripts/vendor/*',
       'test/spec/{,*/}*.js'
@@ -223,7 +231,10 @@ module.exports = {
   wiredep: {
     app: {
       ignorePath: /^<%= config.app %>\/|\.\.\//,
-      src: ['<%%= config.app %>/{,*/}*.html']<% if (includeBootstrap) { %>,<% if (includeSass) { %>
+      src: [
+        '<%%= config.app %>/{,*/}*.html'
+        //'<%%= config.app %>/{,*/}*.ejs'
+      ]<% if (includeBootstrap) { %>,<% if (includeSass) { %>
       exclude: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js']<% } else { %>
       exclude: ['bower_components/bootstrap/dist/js/bootstrap.js']<% } } %>
     }<% if (includeSass) { %>,
@@ -435,13 +446,32 @@ module.exports = {
         to: 'fonts/fontawesome/fontawesome-'
       }<% if (includeBootstrap) { %>, {
         // Bootstrap
-        from: '<% if (includeSass) {
-            %>../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/<%
-          } else {
-            %>bower_components/bootstrap/dist/fonts/bootstrap/<%
-          } %>',
+        <% if (includeSass) { %>
+        from: '../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/',
         to: 'fonts/bootstrap/'
+        <% } else { %>
+        //from: '../fonts/glyp',
+        //to: 'fonts/bootstrap/glyp'
+        <% } %>
       }<% } %>]
+    }
+  },
+
+  ejs: {
+    all: {
+      options: {
+        title: '<%= appname %>',
+        url: function(url) {
+          return 'http://example.com/' + url;
+        }
+      },
+      src: [
+        '<%%= config.app %>/{,*/}*.ejs',
+        '!<%%= config.app %>/{,*/}_*.ejs'
+      ],
+      dest: '.',
+      expand: true,
+      ext: '.html'
     }
   }
 };

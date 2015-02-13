@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
-  config['sprite'] = require('./grunt/sprite')(grunt);
+  config.sprite = require('./grunt/sprite')();
 
   // Define the configuration for all the tasks
   grunt.initConfig(config);
@@ -36,6 +36,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ejs',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
@@ -67,6 +68,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ejs',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

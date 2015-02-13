@@ -27,7 +27,7 @@ describe('Webapp generator', function () {
       'Gruntfile.js',
       'app/favicon.ico',
       'app/robots.txt',
-      'app/index.html'
+      'app/index.ejs'
     ];
 
     var options = {
@@ -75,7 +75,7 @@ describe('Webapp generator', function () {
           ['package.json', /grunt-contrib-sass/],
           ['package.json', /grunt-sass/],
           ['initConfig.js', /bootstrap-sass-official/],
-          ['app/index.html', /Sass is a mature/],
+          ['app/index.ejs', /Sass is a mature/],
           ['bower.json', /bootstrap-sass-official/]
         ]);
         done();
@@ -108,7 +108,7 @@ describe('Webapp generator', function () {
 
         assert.fileContent([
           ['initConfig.js', /modernizr/],
-          ['app/index.html', /modernizr/],
+          ['app/index.ejs', /modernizr/],
           ['bower.json', /modernizr/],
           ['package.json', /modernizr/],
         ]);
@@ -123,7 +123,7 @@ describe('Webapp generator', function () {
 
         assert.fileContent([
           ['initConfig.js', /bootstrap/],
-          ['app/index.html', /bootstrap/],
+          ['app/index.ejs', /bootstrap/],
           ['bower.json', /bootstrap/]
         ]);
 
@@ -137,7 +137,7 @@ describe('Webapp generator', function () {
 
         assert.fileContent([
           ['initConfig.js', /sass/],
-          ['app/index.html', /Sass/],
+          ['app/index.ejs', /Sass/],
           ['.gitignore', /\.sass-cache/],
           ['package.json', /grunt-contrib-sass/]
         ]);
@@ -177,7 +177,7 @@ describe('Webapp generator', function () {
 
         assert.fileContent([
           ['initConfig.js', /bootstrap-sass-official/],
-          ['app/index.html', /Sass is a mature/],
+          ['app/index.ejs', /Sass is a mature/],
           ['bower.json', /bootstrap-sass-official/]
         ]);
 

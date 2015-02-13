@@ -3,7 +3,7 @@ var config = require('../initConfig'),
     fs = require('fs'),
     path = require('path');
 
-module.exports = function (grunt) {
+module.exports = function () {
   var sprites = {};
   
   var getFolders = function (dir) {
@@ -11,12 +11,12 @@ module.exports = function (grunt) {
       .filter(function (file){
         return fs.statSync(path.join(dir, file)).isDirectory();
       });
-  }
+  };
 
   var folders = getFolders(config.config.app + '/sprites');
 
   folders.forEach(function (name) {
-    sprites[name] = {
+    sprites.name = {
       src: config.config.app + '/sprites/' + name + '/*.png',
       dest: config.config.app + '/images/' + name + '.png',
       destCss: config.config.app + '/styles/sprites/_' + name + '.scss',
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
       cssOpts: {
         prefix: name
       }
-    }
+    };
   });
 
   return sprites;

@@ -63,14 +63,14 @@ describe('Webapp generator', function () {
         assert.noFileContent([
           ['initConfig.js', /coffee/],
           ['initConfig.js', /modernizr/],
-          ['app/index.html', /modernizr/],
+          ['app/index.ejs', /modernizr/],
           ['bower.json', /modernizr/],
           ['package.json', /modernizr/],
           ['initConfig.js', /bootstrap/],
-          ['app/index.html', /bootstrap/],
+          ['app/index.ejs', /bootstrap/],
           ['bower.json', /bootstrap/],
           ['initConfig.js', /sass/],
-          ['app/index.html', /Sass/],
+          ['app/index.ejs', /Sass/],
           ['.gitignore', /\.sass-cache/],
           ['package.json', /grunt-contrib-sass/],
           ['package.json', /grunt-sass/],
@@ -144,7 +144,7 @@ describe('Webapp generator', function () {
 
         assert.noFileContent([
           ['package.json', /grunt-sass/],
-          ['app/index.html', /Sass is a mature/]
+          ['app/index.ejs', /Sass is a mature/]
         ]);
 
         done();

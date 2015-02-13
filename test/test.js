@@ -123,7 +123,7 @@ describe('Webapp generator', function () {
 
         assert.fileContent([
           ['initConfig.js', /bootstrap/],
-          ['app/foot.ejs', /bootstrap/],
+          ['app/ejs/_foot.ejs', /bootstrap/],
           ['bower.json', /bootstrap/]
         ]);
 

@@ -18,7 +18,8 @@
     "grunt-contrib-sass": "^0.9.2",<% } %>
     "grunt-contrib-uglify": "^0.5.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-ejs": "^0.3.0",<% if (testFramework === 'mocha') { %>
+    "grunt-ejs": "^0.3.0",
+    "grunt-frontnote": "^0.1.1",<% if (testFramework === 'mocha') { %>
     "grunt-mocha": "^0.4.10",<% } %><% if (includeModernizr) { %>
     "grunt-modernizr": "^0.5.2",<% } %>
     "grunt-newer": "^0.7.0",

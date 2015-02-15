@@ -398,8 +398,13 @@ module.exports = {
       src: '{,*/}*.css'
     },
     styleguide: {
-      src: '<%%= config.dist %>/styles/*.main.css',
-      dest: '<%%= config.dist %>/styles/style.css'
+      files: [{
+        src: '<%%= config.dist %>/styles/*.main.css',
+        dest: '<%%= config.dist %>/styles/styleguide.css'
+      }, {
+        src: '<%%= config.dist %>/scripts/*.main.js',
+        dest: '<%%= config.dist %>/scripts/styleguide.js'
+      }]
     }
   },<% if (includeModernizr) { %>
 
@@ -485,7 +490,8 @@ module.exports = {
       template: 'templates/styleguide/index.html',
       overview: 'templates/styleguide/styleguide.md',
       includePath: 'templates/styleguide/assets/**/*',
-      css: '../styles/style.css'
+      css: '../styles/styleguide.css',
+      script: '../scripts/styleguide.js'
     },
     dist: [
       '<%%= config.app %>/styles/{,*/}*.scss'
